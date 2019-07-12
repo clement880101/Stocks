@@ -1,0 +1,16 @@
+IntradayEquity(symbol, interval)
+	Use to identify price of equity in intraday interval
+	Returns timestamp, open, high, low, close, and volume
+
+	Symbol should be exactly the same as stock symbol
+	Interval should be 1min, 5min, 15min, 30min, or 60min
+
+NormEquity(symbol, timeSeries)
+	Use to identify price of equity in longer intervals
+	Returns last trading date, open, high, low, close, volume
+	
+	Symbol should be exactly the same as stock symbol
+	timeSeries should be d for daily, w for weekly, or m for monthly
+
+IndiciesType1(indicator, symbol, interval, time_period, series_type)
+    Indicators supported: SMA, EMA, WMA, DEMA, TEMA, TRIMA, KAMA, MAMA
