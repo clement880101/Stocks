@@ -55,4 +55,4 @@ class Alpaca:
             status='new',
             limit=100
         )
-        orders.
+        print(orders)

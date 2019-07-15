@@ -18,7 +18,6 @@ from database import *
 
 
 ap = Alpaca()
-ap.cancelOrder('6a0863e2-7f45-442b-9a83-ff79d8462ebf')
 ap.exsistingOrder()
 
 
