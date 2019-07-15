@@ -14,7 +14,7 @@ class Database:
 
     def pull(self, obj):
         data = json.load(urllib.request.urlopen(obj.query()))
-
+        print(obj.query())
         if type(obj) is IntradayEquity:
             tablename = "Intraday" + "_" +\
                         data[list(data)[0]]["2. Symbol"] + "_" +\
@@ -42,6 +42,7 @@ class Database:
 
             for i in list(zip(date, open, high, low, close, volume)):
                 self.db.execute("INSERT INTO " + tablename + " VALUES (?,?, ?, ?, ?, ?)", i)
+            print("Table added/updated")
 
         elif type(obj) is NormEquity:
             tablename = data[list(data)[0]]["2. Symbol"] + "_" +\
@@ -69,6 +70,7 @@ class Database:
 
             for i in list(zip(date, open, high, low, close, volume)):
                 self.db.execute("INSERT INTO " + tablename + " VALUES (?,?, ?, ?, ?, ?)", i)
+            print("Table added/updated")
 
         elif type(obj) is IndiciesType1:
             tablename = data[list(data)[0]]["1: Symbol"] + "_" + \
@@ -85,7 +87,7 @@ class Database:
 
             for i in list(zip(date, value)):
                 self.db.execute("INSERT INTO " + tablename + " VALUES (?,?)", i)
-        print("Table added/updated")
+            print("Table added/updated")
 
     def commit(self):
         self.connect.commit()

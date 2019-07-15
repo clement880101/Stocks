@@ -11,6 +11,22 @@ class Alpaca:
         self.account = self.api.get_account()
         if self.account.trading_blocked:
             print('Account is currently restricted from trading.')
+            exit()
+        self.clock = self.api.get_clock()
+
+    def buyingPower(self):
+        return self.account.buying_power
+
+    def marketOpen(self):
+        return self.clock.is_open
+
+    def getTime(self):
+        return self.clock.timestamp
+
+    def showPosition(self):
+        portfolio = self.api.list_positions()
+        for position in portfolio:
+            print("{} shares of {}".format(position.qty, position.symbol))
 
     def marketOrder(self, symbol, qty, side, tif):
         self.api.submit_order(
@@ -31,10 +47,12 @@ class Alpaca:
             limit_price=price
         )
 
+    def cancelOrder(self, id):
+        self.api.cancel_order(id)
+
     def exsistingOrder(self):
         orders = self.api.list_orders(
-            status='closed',
+            status='new',
             limit=100
         )
-        print(orders)
-
+        orders.
