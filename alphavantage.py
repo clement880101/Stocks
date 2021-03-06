@@ -3,7 +3,7 @@
 class _AlphaVantage:
     def __init__(self):
         self.url="http://www.alphavantage.co/query?"
-        self.apikey="P22JNIXNFO4C2995"
+        self.apikey=""
 
 
 class IntradayEquity(_AlphaVantage):
